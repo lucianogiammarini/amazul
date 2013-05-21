@@ -1,0 +1,584 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Amazul</class>
+ <widget class="QMainWindow" name="Amazul">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>715</width>
+    <height>596</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Amazul</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="resources.qrc">
+    <normaloff>:/images/images/Amazul.png</normaloff>:/images/images/Amazul.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QVBoxLayout" name="verticalLayout_4">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_4">
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QPushButton" name="pbSearch">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
+          </property>
+          <property name="toolTip">
+           <string>Buscar alumnas</string>
+          </property>
+          <property name="text">
+           <string>Buscar</string>
+          </property>
+          <property name="icon">
+           <iconset resource="resources.qrc">
+            <normaloff>:/images/images/Search.png</normaloff>:/images/images/Search.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>20</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="shortcut">
+           <string>Ctrl+B</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pbAdd">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
+          </property>
+          <property name="toolTip">
+           <string>Agregar una alumna</string>
+          </property>
+          <property name="text">
+           <string>Agregar</string>
+          </property>
+          <property name="icon">
+           <iconset resource="resources.qrc">
+            <normaloff>:/images/images/Contacts.png</normaloff>:/images/images/Contacts.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>20</width>
+            <height>20</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pbDel">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
+          </property>
+          <property name="toolTip">
+           <string>Eliminar alumna seleccionada</string>
+          </property>
+          <property name="text">
+           <string>Eliminar</string>
+          </property>
+          <property name="icon">
+           <iconset resource="resources.qrc">
+            <normaloff>:/images/images/Recyclebin Open.png</normaloff>:/images/images/Recyclebin Open.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>20</width>
+            <height>20</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pbPreview">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
+          </property>
+          <property name="text">
+           <string>Vista Previa</string>
+          </property>
+          <property name="icon">
+           <iconset resource="resources.qrc">
+            <normaloff>:/images/images/Print.png</normaloff>:/images/images/Print.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>20</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="shortcut">
+           <string>Ctrl+P</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pbPrintAll">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
+          </property>
+          <property name="toolTip">
+           <string>Marcar todos para imprimir</string>
+          </property>
+          <property name="text">
+           <string>Todos</string>
+          </property>
+          <property name="icon">
+           <iconset resource="resources.qrc">
+            <normaloff>:/images/images/Accept.png</normaloff>:/images/images/Accept.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>20</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="shortcut">
+           <string>Ctrl+P</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="centralLayout"/>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QWidget" name="widgetInfo" native="true">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <property name="margin">
+        <number>0</number>
+       </property>
+       <item>
+        <layout class="QGridLayout" name="gridLayout">
+         <item row="2" column="2">
+          <widget class="QLineEdit" name="lePhone1">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="maxLength">
+            <number>15</number>
+           </property>
+           <property name="placeholderText">
+            <string>Teléfono</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLineEdit" name="leLabel1">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="maxLength">
+            <number>10</number>
+           </property>
+           <property name="placeholderText">
+            <string>Etiqueta</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="2">
+          <widget class="QLineEdit" name="lePhone2">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="maxLength">
+            <number>15</number>
+           </property>
+           <property name="placeholderText">
+            <string>Teléfono</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="2">
+          <widget class="QLineEdit" name="lePhone3">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="maxLength">
+            <number>15</number>
+           </property>
+           <property name="placeholderText">
+            <string>Teléfono</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QLineEdit" name="leName">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maxLength">
+            <number>20</number>
+           </property>
+           <property name="placeholderText">
+            <string>Nombre</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLineEdit" name="leLabel2">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="maxLength">
+            <number>10</number>
+           </property>
+           <property name="placeholderText">
+            <string>Etiqueta</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <property name="spacing">
+            <number>3</number>
+           </property>
+           <item>
+            <layout class="QHBoxLayout" name="layoutNumber"/>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="leCity">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="maxLength">
+              <number>20</number>
+             </property>
+             <property name="placeholderText">
+              <string>Ciudad</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="pbMap">
+             <property name="maximumSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="focusPolicy">
+              <enum>Qt::NoFocus</enum>
+             </property>
+             <property name="toolTip">
+              <string>Ver mapa</string>
+             </property>
+             <property name="icon">
+              <iconset resource="resources.qrc">
+               <normaloff>:/images/images/Address.png</normaloff>:/images/images/Address.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>20</width>
+               <height>20</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLineEdit" name="leAddress">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="maxLength">
+            <number>40</number>
+           </property>
+           <property name="placeholderText">
+            <string>Dirección</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLineEdit" name="leLabel3">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="maxLength">
+            <number>10</number>
+           </property>
+           <property name="placeholderText">
+            <string>Etiqueta</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <layout class="QHBoxLayout" name="layoutLastname"/>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <property name="spacing">
+          <number>3</number>
+         </property>
+         <item>
+          <layout class="QHBoxLayout" name="calendarLayout">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+          </layout>
+         </item>
+         <item>
+          <widget class="QWidget" name="widget" native="true">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_2">
+            <property name="spacing">
+             <number>3</number>
+            </property>
+            <property name="margin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QPushButton" name="pbSave">
+              <property name="cursor">
+               <cursorShape>PointingHandCursor</cursorShape>
+              </property>
+              <property name="focusPolicy">
+               <enum>Qt::NoFocus</enum>
+              </property>
+              <property name="toolTip">
+               <string>Guardar cambios</string>
+              </property>
+              <property name="text">
+               <string>Guardar</string>
+              </property>
+              <property name="icon">
+               <iconset resource="resources.qrc">
+                <normaloff>:/images/images/Floopy.png</normaloff>:/images/images/Floopy.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>20</width>
+                <height>20</height>
+               </size>
+              </property>
+              <property name="shortcut">
+               <string>Ctrl+G</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pbUndo">
+              <property name="cursor">
+               <cursorShape>PointingHandCursor</cursorShape>
+              </property>
+              <property name="focusPolicy">
+               <enum>Qt::NoFocus</enum>
+              </property>
+              <property name="toolTip">
+               <string>Deshacer cambios</string>
+              </property>
+              <property name="text">
+               <string>Deshacer</string>
+              </property>
+              <property name="icon">
+               <iconset resource="resources.qrc">
+                <normaloff>:/images/images/Undo.png</normaloff>:/images/images/Undo.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>20</width>
+                <height>20</height>
+               </size>
+              </property>
+              <property name="shortcut">
+               <string>Ctrl+Z</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>715</width>
+     <height>18</height>
+    </rect>
+   </property>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <tabstops>
+  <tabstop>leName</tabstop>
+  <tabstop>leAddress</tabstop>
+  <tabstop>leCity</tabstop>
+  <tabstop>leLabel1</tabstop>
+  <tabstop>lePhone1</tabstop>
+  <tabstop>leLabel2</tabstop>
+  <tabstop>lePhone2</tabstop>
+  <tabstop>leLabel3</tabstop>
+  <tabstop>lePhone3</tabstop>
+ </tabstops>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
+ <connections/>
+</ui>
