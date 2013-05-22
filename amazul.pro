@@ -15,12 +15,10 @@ MOC_DIR = build
 UI_DIR = build
 
 TARGET = amazul
-RC_FILE = amazul.rc
 TEMPLATE = app
-TRANSLATIONS = amazul_en.ts
 
 SOURCES += main.cpp\
-        amazul.cpp \
+	amazul.cpp \
     calendarmodel.cpp \
     calendarwidget.cpp \
     linefilter.cpp \
@@ -53,6 +51,6 @@ RESOURCES += \
     resources.qrc
 
 OTHER_FILES += \
-    amazul.rc
+	amazul_db
 
 #include(./libs/qtsingleapplication-2.6-opensource/src/qtsingleapplication.pri)
