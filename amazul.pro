@@ -18,7 +18,7 @@ TARGET = amazul
 TEMPLATE = app
 
 SOURCES += main.cpp\
-        amazul.cpp \
+	amazul.cpp \
     calendarmodel.cpp \
     calendarwidget.cpp \
     linefilter.cpp \
@@ -49,5 +49,8 @@ FORMS    += amazul.ui
 
 RESOURCES += \
     resources.qrc
+
+OTHER_FILES += \
+	amazul_db
 
 #include(./libs/qtsingleapplication-2.6-opensource/src/qtsingleapplication.pri)
