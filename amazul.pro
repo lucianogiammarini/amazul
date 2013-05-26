@@ -15,9 +15,7 @@ MOC_DIR = build
 UI_DIR = build
 
 TARGET = amazul
-RC_FILE = amazul.rc
 TEMPLATE = app
-TRANSLATIONS = amazul_en.ts
 
 SOURCES += main.cpp\
         amazul.cpp \
@@ -51,8 +49,5 @@ FORMS    += amazul.ui
 
 RESOURCES += \
     resources.qrc
-
-OTHER_FILES += \
-    amazul.rc
 
 #include(./libs/qtsingleapplication-2.6-opensource/src/qtsingleapplication.pri)

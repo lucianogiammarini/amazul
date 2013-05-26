@@ -196,7 +196,7 @@ void Amazul::preview()
 	QPrinter::PageSize size = dialog.pageSize();
 	PdfCreator creator(model);
     creator.createPdf(fileName, size);
-    QDesktopServices::openUrl(QUrl::fromLocalFile(fileName));
+	QDesktopServices::openUrl(QUrl::fromLocalFile(fileName));
 }
 
 void Amazul::printAll()
@@ -350,7 +350,8 @@ void Amazul::setupConnections()
 void Amazul::setupModel()
 {
 	QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-	db.setDatabaseName("amazul_db");
+	QString dbPath = QCoreApplication::applicationDirPath() + "/amazul_db";
+	db.setDatabaseName(dbPath);
 
 	if (!db.open()) {
 		QMessageBox::critical(0, trUtf8("No se puede abrir la base de datos"),
@@ -384,7 +385,10 @@ void Amazul::setupModel()
 	model = new StudentsTableModel(this, db);
 	model->setTable("student");
 	model->setEditStrategy(QSqlTableModel::OnManualSubmit);
-	model->select();
+	if(!model->select()) {
+		qDebug() << model->lastError();
+	}
+
 	model->setHeaderData(1, Qt::Horizontal, trUtf8("Apellido"));
 	model->setHeaderData(2, Qt::Horizontal, trUtf8("Nombre"));
 	model->setHeaderData(3, Qt::Horizontal, trUtf8("Calle"));
