@@ -201,7 +201,7 @@ void Amazul::preview()
 
 	QPrinter::PageSize size = dialog.pageSize();
 	PdfCreator creator(model);
-	creator.createPdf(fileName, size);
+    creator.createPdf(fileName, size);
 	QDesktopServices::openUrl(QUrl::fromLocalFile(fileName));
 }
 

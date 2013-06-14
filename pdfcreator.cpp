@@ -7,8 +7,8 @@ PdfCreator::PdfCreator(StudentsTableModel *model) :
 	QObject()
 {
 	this->model = model;
-	mLength.insert(QPrinter::Legal, 68);
-	mLength.insert(QPrinter::A4, 55);
+	mLength.insert(QPrinter::Legal, 64);
+	mLength.insert(QPrinter::A4, 51);
 
 	web = new QWebView();
 	connect(web, SIGNAL(loadFinished(bool)), this, SLOT(convertIt()));
