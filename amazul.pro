@@ -7,7 +7,7 @@
 QT += sql webkitwidgets widgets printsupport
 
 #CONFIG += debug warn_on
-CONFIG += static
+#CONFIG += static
 
 DESTDIR = build
 OBJECTS_DIR = build

@@ -14,6 +14,7 @@ Amazul::Amazul(QWidget *parent) :
 	ui(new Ui::Amazul)
 {
 	ui->setupUi(this);
+	setWindowIcon(QIcon(":/icons/Amazul.png"));
 	modified = false;
 
 	calendar = new CalendarWidget();
@@ -73,9 +74,10 @@ Amazul::~Amazul()
 	delete proxyModel;
 	//delete selectionModel;
 	delete mapper;
-	delete machine;
+
 	delete editing;
 	delete addingRow;
+	delete machine;
 
 	delete ui;
 	delete calendar;
@@ -300,7 +302,7 @@ void Amazul::setupStateMachine()
 	machine = new QStateMachine(this);
 	editing = new QState();
 	editing->assignProperty(ui->pbUndo, "text", trUtf8("Deshacer"));
-	editing->assignProperty(ui->pbUndo, "icon", QIcon(QPixmap(":/icons/undo.png")));
+	editing->assignProperty(ui->pbUndo, "icon", QIcon(QPixmap(":/icons/undo-circle2.png")));
 	editing->assignProperty(ui->widget, "enabled", false);
 
 	addingRow = new QState();
@@ -330,6 +332,15 @@ void Amazul::setupStyleSheets()
 	ui->pbSearch->setStyleSheet(style);
 	ui->pbPrintAll->setStyleSheet(style);
 	ui->pbPreview->setStyleSheet(style);
+
+	ui->pbAdd->setIcon(QIcon(":/icons/user-add.png"));
+	ui->pbDel->setIcon(QIcon(":/icons/user-del.png"));
+	ui->pbSearch->setIcon(QIcon(":/icons/search.png"));
+	ui->pbPreview->setIcon(QIcon(":/icons/print.png"));
+	ui->pbPrintAll->setIcon(QIcon(":/icons/all.png"));
+
+	ui->pbSave->setIcon(QIcon(":/icons/save.png"));
+	ui->pbUndo->setIcon(QIcon(":/icons/undo-circle2.png"));
 }
 
 void Amazul::setupConnections()
