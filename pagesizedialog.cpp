@@ -6,7 +6,7 @@ PageSizeDialog::PageSizeDialog(QWidget *parent) :
 	QDialog(parent)
 {
 	setWindowTitle("Amazul");
-	setWindowIcon(QIcon(QPixmap(":/images/images/Amazul.ico")));
+	setWindowIcon(QIcon(QPixmap(":/icons/Amazul.png")));
 
 	settings = new QSettings("Luciano", "Amazul");
 
@@ -14,16 +14,22 @@ PageSizeDialog::PageSizeDialog(QWidget *parent) :
 	label->setAlignment(Qt::AlignCenter);
 
 	QHBoxLayout *horLayout = new QHBoxLayout;
+	QVBoxLayout *verLayout = new QVBoxLayout;
 	QButtonGroup *buttonGroup = new QButtonGroup;
+
+	QLabel *paper = new QLabel;
+	paper->setPixmap(QPixmap(":/icons/preview.png"));
+	horLayout->addWidget(paper);
 
 	rbLegal = new QRadioButton(tr("Oficio"));
 	rbLegal->setChecked(true);
 	buttonGroup->addButton(rbLegal, QPrinter::Legal);
-	horLayout->addWidget(rbLegal);
+	verLayout->addWidget(rbLegal);
 
 	rbA4 = new QRadioButton(tr("A4"));
 	buttonGroup->addButton(rbA4, QPrinter::A4);
-	horLayout->addWidget(rbA4);
+	verLayout->addWidget(rbA4);
+	horLayout->addLayout(verLayout);
 
 	QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok |
 													   QDialogButtonBox::Cancel,
@@ -31,9 +37,9 @@ PageSizeDialog::PageSizeDialog(QWidget *parent) :
 	connect(buttonBox, SIGNAL(accepted()), this, SLOT(accept()));
 	connect(buttonBox, SIGNAL(rejected()), this, SLOT(reject()));
 	QPushButton *ok = buttonBox->button(QDialogButtonBox::Ok);
-	ok->setIcon(QIcon(QPixmap(":/images/images/Accept.png")));
+	ok->setIcon(QIcon(QPixmap(":/icons/ok.png")));
 	QPushButton *cancel = buttonBox->button(QDialogButtonBox::Cancel);
-	cancel->setIcon(QIcon(QPixmap(":/images/images/Reject.png")));
+	cancel->setIcon(QIcon(QPixmap(":/icons/reject.png")));
 
 	QVBoxLayout *layout = new QVBoxLayout;
 	layout->addWidget(label);

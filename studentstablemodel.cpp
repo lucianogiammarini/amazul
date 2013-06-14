@@ -49,10 +49,10 @@ Qt::ItemFlags StudentsTableModel::flags(const QModelIndex &index) const
 
 	Qt::ItemFlags result = QSqlTableModel::flags(index);
 
-	if (index.column() != 14)
+    /*if (index.column() != 14)
 		result = Qt::ItemIsEnabled | Qt::ItemIsSelectable;
 	else
-		result = Qt::ItemIsEnabled | Qt::ItemIsSelectable | Qt::ItemIsEditable;
+        result = Qt::ItemIsEnabled | Qt::ItemIsSelectable | Qt::ItemIsEditable;*/
 
 	return result;
 }

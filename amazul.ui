@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="resources.qrc">
-    <normaloff>:/images/images/Amazul.png</normaloff>:/images/images/Amazul.png</iconset>
+    <normaloff>:/icons/Amazul.png</normaloff>:/icons/Amazul.png</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -39,7 +39,7 @@
           </property>
           <property name="icon">
            <iconset resource="resources.qrc">
-            <normaloff>:/images/images/Search.png</normaloff>:/images/images/Search.png</iconset>
+            <normaloff>:/icons/search.png</normaloff>:/icons/search.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -71,7 +71,7 @@
           </property>
           <property name="icon">
            <iconset resource="resources.qrc">
-            <normaloff>:/images/images/Contacts.png</normaloff>:/images/images/Contacts.png</iconset>
+            <normaloff>:/icons/user-add.png</normaloff>:/icons/user-add.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -97,7 +97,7 @@
           </property>
           <property name="icon">
            <iconset resource="resources.qrc">
-            <normaloff>:/images/images/Recyclebin Open.png</normaloff>:/images/images/Recyclebin Open.png</iconset>
+            <normaloff>:/icons/user-del.png</normaloff>:/icons/user-del.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -120,7 +120,7 @@
           </property>
           <property name="icon">
            <iconset resource="resources.qrc">
-            <normaloff>:/images/images/Print.png</normaloff>:/images/images/Print.png</iconset>
+            <normaloff>:/icons/print.png</normaloff>:/icons/print.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -149,7 +149,7 @@
           </property>
           <property name="icon">
            <iconset resource="resources.qrc">
-            <normaloff>:/images/images/Accept.png</normaloff>:/images/images/Accept.png</iconset>
+            <normaloff>:/icons/all.png</normaloff>:/icons/all.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -401,7 +401,7 @@
              </property>
              <property name="icon">
               <iconset resource="resources.qrc">
-               <normaloff>:/images/images/Address.png</normaloff>:/images/images/Address.png</iconset>
+               <normaloff>:/icons/map.png</normaloff>:/icons/map.png</iconset>
              </property>
              <property name="iconSize">
               <size>
@@ -520,7 +520,7 @@
               </property>
               <property name="icon">
                <iconset resource="resources.qrc">
-                <normaloff>:/images/images/Floopy.png</normaloff>:/images/images/Floopy.png</iconset>
+                <normaloff>:/icons/save.png</normaloff>:/icons/save.png</iconset>
               </property>
               <property name="iconSize">
                <size>
@@ -549,7 +549,7 @@
               </property>
               <property name="icon">
                <iconset resource="resources.qrc">
-                <normaloff>:/images/images/Undo.png</normaloff>:/images/images/Undo.png</iconset>
+                <normaloff>:/icons/undo-circle2.png</normaloff>:/icons/undo-circle2.png</iconset>
               </property>
               <property name="iconSize">
                <size>

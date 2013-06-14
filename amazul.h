@@ -58,6 +58,7 @@ private slots:
 
 
 private:
+	void setupStyleSheets();
 	void setupModel();
 	void setupView();
 	void setupMapper();

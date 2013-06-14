@@ -19,9 +19,10 @@ public:
 	QStringList phones(int row) const;
 	bool print(int row) const;
 
+	QVariant data(const QModelIndex &idx, int role = Qt::DisplayRole) const;
+
 protected:
 	Qt::ItemFlags flags(const QModelIndex &index) const;
-	QVariant data(const QModelIndex &idx, int role = Qt::DisplayRole) const;
 };
 
 #endif // STUDENTSTABLEMODEL_H

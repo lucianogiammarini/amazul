@@ -20,6 +20,7 @@ Amazul::Amazul(QWidget *parent) :
 	ui->calendarLayout->addWidget(calendar);
 
 	mapView = new QWebView();
+	mapView->setWindowIcon(QIcon(":/icons/Amazul.png"));
 
 	leNumber = new LineEdit();
 	leNumber->setMaxLength(4);
@@ -32,10 +33,11 @@ Amazul::Amazul(QWidget *parent) :
 	leLastname->setPlaceholderText(trUtf8("Apellido"));
 	ui->layoutLastname->addWidget(leLastname);
 
-	leFilter = new LineFilter(":/images/images/Clear-small.png", this);
+	leFilter = new LineFilter(":/icons/clear.png", this);
 	ui->centralLayout->addWidget(leFilter);
 	leFilter->hide();
 
+	setupStyleSheets();
 	setupConnections();
 	setupModel();
 	setupView();
@@ -64,20 +66,20 @@ Amazul::~Amazul()
 {
 	delete leFilter;
 	delete leLastname;
-    delete leNumber;
+	delete leNumber;
 
 	delete tableView;
 	delete model;
 	delete proxyModel;
-    //delete selectionModel;
-    delete mapper;
+	//delete selectionModel;
+	delete mapper;
 	delete machine;
 	delete editing;
 	delete addingRow;
 
 	delete ui;
 	delete calendar;
-    delete mapView;
+	delete mapView;
 }
 
 void Amazul::closeEvent(QCloseEvent *event)
@@ -139,14 +141,14 @@ void Amazul::removeRow()
 	QMessageBox question(QMessageBox::Question, trUtf8("Confirmar"),
 					trUtf8("<b>Seguro desea eliminar la alumna seleccionada?</b>"),
 					QMessageBox::Cancel | QMessageBox::Ok, this);
-	question.setWindowIcon(QIcon(QPixmap(":/images/images/Amazul.png")));
+	question.setWindowIcon(QIcon(QPixmap(":/icons/Amazul.png")));
 	question.setInformativeText(trUtf8("Los datos se perderan."));
-	question.setProperty("iconPixmap", QPixmap(":/images/images/Question.png"));
+	question.setProperty("iconPixmap", QPixmap(":/icons/help.png"));
 
 	QAbstractButton *ok = question.button(QMessageBox::Ok);
-	ok->setIcon(QIcon(QPixmap(":/images/images/Accept.png")));
+	ok->setIcon(QIcon(QPixmap(":/icons/ok.png")));
 	QAbstractButton *cancel = question.button(QMessageBox::Cancel);
-	cancel->setIcon(QIcon(QPixmap(":/images/images/Reject.png")));
+	cancel->setIcon(QIcon(QPixmap(":/icons/reject.png")));
 	question.setDefaultButton(QMessageBox::Cancel);
 
 	question.exec();
@@ -156,13 +158,16 @@ void Amazul::removeRow()
 	mapper->revert();
 	proxyModel->removeRow(tableView->currentIndex().row());
 	model->submitAll();
+	tableView->selectRow(0);
 }
 
 void Amazul::save()
 {
 	mapper->submit();
 	QModelIndex current = tableView->currentIndex();
+	//qDebug() << model->data(model->index(0,1)).toString();
 	model->submitAll();
+	//qDebug() << model->lastError().text() << model->lastError().type();
 	tableView->setCurrentIndex(current);
 	tableView->scrollTo(current);
 	modified = false;
@@ -176,6 +181,7 @@ void Amazul::undo()
 	ui->widget->setEnabled(modified);
 	if (machine->configuration().contains(addingRow)){
 		proxyModel->removeRow(tableView->currentIndex().row());
+		tableView->selectRow(0);
 	}
 }
 
@@ -185,18 +191,18 @@ void Amazul::preview()
 	if (dialog.exec() == QDialog::Rejected)
 		return;
 
-    QString path = QDir::tempPath().append("/amazul.pdf");
-    QString fileName = QDir::toNativeSeparators(path);
-    if (QFile::exists(fileName))
-        QFile::remove(fileName);
+	QString path = QDir::tempPath().append("/amazul.pdf");
+	QString fileName = QDir::toNativeSeparators(path);
+	if (QFile::exists(fileName))
+		QFile::remove(fileName);
 
-    QFile tmpFile(fileName);
-    tmpFile.open(QIODevice::ReadWrite);
+	QFile tmpFile(fileName);
+	tmpFile.open(QIODevice::ReadWrite);
 
 	QPrinter::PageSize size = dialog.pageSize();
 	PdfCreator creator(model);
-    creator.createPdf(fileName, size);
-    QDesktopServices::openUrl(QUrl::fromLocalFile(fileName));
+	creator.createPdf(fileName, size);
+	QDesktopServices::openUrl(QUrl::fromLocalFile(fileName));
 }
 
 void Amazul::printAll()
@@ -294,12 +300,12 @@ void Amazul::setupStateMachine()
 	machine = new QStateMachine(this);
 	editing = new QState();
 	editing->assignProperty(ui->pbUndo, "text", trUtf8("Deshacer"));
-	editing->assignProperty(ui->pbUndo, "icon", QIcon(QPixmap(":/images/images/Undo.png")));
+	editing->assignProperty(ui->pbUndo, "icon", QIcon(QPixmap(":/icons/undo.png")));
 	editing->assignProperty(ui->widget, "enabled", false);
 
 	addingRow = new QState();
 	addingRow->assignProperty(ui->pbUndo, "text", trUtf8("Cancelar"));
-	addingRow->assignProperty(ui->pbUndo, "icon", QIcon(QPixmap(":/images/images/Reject.png")));
+	addingRow->assignProperty(ui->pbUndo, "icon", QIcon(QPixmap(":/icons/reject.png")));
 	addingRow->assignProperty(ui->widget, "enabled", true);
 	addingRow->assignProperty(calendar, "day", -1);
 	addingRow->assignProperty(calendar, "month", 0);
@@ -314,6 +320,16 @@ void Amazul::setupStateMachine()
 	machine->addState(addingRow);
 	machine->setInitialState(editing);
 	machine->start();
+}
+
+void Amazul::setupStyleSheets()
+{
+	QString style("text-align: left;");
+	ui->pbAdd->setStyleSheet(style);
+	ui->pbDel->setStyleSheet(style);
+	ui->pbSearch->setStyleSheet(style);
+	ui->pbPrintAll->setStyleSheet(style);
+	ui->pbPreview->setStyleSheet(style);
 }
 
 void Amazul::setupConnections()
@@ -350,7 +366,8 @@ void Amazul::setupConnections()
 void Amazul::setupModel()
 {
 	QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-	db.setDatabaseName("amazul_db");
+	QString dbPath = QCoreApplication::applicationDirPath() + "/amazul_db";
+	db.setDatabaseName(dbPath);
 
 	if (!db.open()) {
 		QMessageBox::critical(0, trUtf8("No se puede abrir la base de datos"),
@@ -384,7 +401,10 @@ void Amazul::setupModel()
 	model = new StudentsTableModel(this, db);
 	model->setTable("student");
 	model->setEditStrategy(QSqlTableModel::OnManualSubmit);
-	model->select();
+	if(!model->select()) {
+		qDebug() << model->lastError();
+	}
+
 	model->setHeaderData(1, Qt::Horizontal, trUtf8("Apellido"));
 	model->setHeaderData(2, Qt::Horizontal, trUtf8("Nombre"));
 	model->setHeaderData(3, Qt::Horizontal, trUtf8("Calle"));
@@ -490,16 +510,16 @@ QMessageBox::StandardButton Amazul::questionDialog(QString title, QString text,
 {
 	QMessageBox question(QMessageBox::Question, title, text,
 				QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel, parent);
-	question.setWindowIcon(QIcon(QPixmap(":/images/images/Amazul.png")));
-	question.setProperty("iconPixmap", QPixmap(":/images/images/Question.png"));
+	question.setWindowIcon(QIcon(QPixmap(":/icons/Amazul.png")));
+	question.setProperty("iconPixmap", QPixmap(":/icons/help.png"));
 	question.setInformativeText(info);
 
 	QAbstractButton *yes = question.button(QMessageBox::Yes);
-	yes->setIcon(QIcon(QPixmap(":/images/images/Accept.png")));
+	yes->setIcon(QIcon(QPixmap(":/icons/ok.png")));
 	QAbstractButton *no = question.button(QMessageBox::No);
-	no->setIcon(QIcon(QPixmap(":/images/images/Reject.png")));
+	no->setIcon(QIcon(QPixmap(":/icons/reject.png")));
 	QAbstractButton *cancel = question.button(QMessageBox::Cancel);
-	cancel->setIcon(QIcon(QPixmap(":/images/images/Cancel.png")));
+	cancel->setIcon(QIcon(QPixmap(":/icons/cancel.png")));
 	question.setDefaultButton(QMessageBox::Yes);
 
 	question.exec();
@@ -515,12 +535,12 @@ void Amazul::infoDialog(QString title, QString text, QString info, QWidget *pare
 {
 	QMessageBox dialog(QMessageBox::Information, title, text,
 				QMessageBox::Ok, parent);
-	dialog.setWindowIcon(QIcon(QPixmap(":/images/images/Amazul.png")));
-	dialog.setProperty("iconPixmap", QPixmap(":/images/images/Alert.png"));
+	dialog.setWindowIcon(QIcon(QPixmap(":/icons/Amazul.png")));
+	dialog.setProperty("iconPixmap", QPixmap(":/icons/alert.png"));
 	dialog.setInformativeText(info);
 
 	QAbstractButton *ok = dialog.button(QMessageBox::Ok);
-	ok->setIcon(QIcon(QPixmap(":/images/images/Accept.png")));
+	ok->setIcon(QIcon(QPixmap(":/icons/ok.png")));
 	dialog.setDefaultButton(QMessageBox::Ok);
 
 	dialog.exec();

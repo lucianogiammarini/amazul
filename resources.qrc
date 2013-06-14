@@ -1,25 +1,27 @@
 <RCC>
-    <qresource prefix="/images">
-        <file>images/Accept.png</file>
-        <file>images/Accept-small.png</file>
-        <file>images/Amazul.png</file>
-        <file>images/Cancel.png</file>
-        <file>images/Clear-small.png</file>
-        <file>images/Contacts.png</file>
-        <file>images/Floopy.png</file>
-        <file>images/Print.png</file>
-        <file>images/Recyclebin Open.png</file>
-        <file>images/Reject.png</file>
-        <file>images/Reject-small.png</file>
-        <file>images/Search.png</file>
-        <file>images/Undo.png</file>
-        <file>images/Alert.png</file>
-        <file>images/Question.png</file>
-        <file>images/back.png</file>
-        <file>images/next.png</file>
-        <file>images/work.png</file>
-        <file>images/zoom-in.png</file>
-        <file>images/zoom-out.png</file>
-        <file>images/Address.png</file>
+    <qresource prefix="/">
+        <file>icons/user-del.png</file>
+        <file>icons/alert.png</file>
+        <file>icons/all.png</file>
+        <file>icons/Amazul.ico</file>
+        <file>icons/Amazul.png</file>
+        <file>icons/clear.png</file>
+        <file>icons/help.png</file>
+        <file>icons/map.png</file>
+        <file>icons/ok.png</file>
+        <file>icons/ok-circle.png</file>
+        <file>icons/preview.png</file>
+        <file>icons/print.png</file>
+        <file>icons/save.png</file>
+        <file>icons/search.png</file>
+        <file>icons/undo.png</file>
+        <file>icons/undo-circle.png</file>
+        <file>icons/user-add.png</file>
+        <file>icons/user-all.png</file>
+        <file>icons/reject-circle.png</file>
+        <file>icons/reject.png</file>
+        <file>icons/undo-circle2.png</file>
+        <file>icons/cancel.png</file>
+        <file>icons/undo2.png</file>
     </qresource>
 </RCC>
