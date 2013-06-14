@@ -339,6 +339,8 @@ void Amazul::setupStyleSheets()
 	ui->pbPreview->setIcon(QIcon(":/icons/print.png"));
 	ui->pbPrintAll->setIcon(QIcon(":/icons/all.png"));
 
+	ui->pbMap->setIcon(QIcon(":/icons/map.png"));
+
 	ui->pbSave->setIcon(QIcon(":/icons/save.png"));
 	ui->pbUndo->setIcon(QIcon(":/icons/undo-circle2.png"));
 }
