@@ -23,5 +23,6 @@
         <file>icons/undo-circle2.png</file>
         <file>icons/cancel.png</file>
         <file>icons/undo2.png</file>
+        <file>icons/birthday-cake.png</file>
     </qresource>
 </RCC>

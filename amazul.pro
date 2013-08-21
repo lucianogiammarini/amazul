@@ -29,7 +29,8 @@ SOURCES += main.cpp\
     sortfilterproxymodel.cpp \
     lineedit.cpp \
     pdfcreator.cpp \
-    pagesizedialog.cpp
+    pagesizedialog.cpp \
+    combobox.cpp
 
 HEADERS  += amazul.h \
     calendarmodel.h \
@@ -43,7 +44,8 @@ HEADERS  += amazul.h \
     lineedit.h \
     htmlConstants.h \
     pdfcreator.h \
-    pagesizedialog.h
+    pagesizedialog.h \
+    combobox.h
 
 FORMS    += amazul.ui
 

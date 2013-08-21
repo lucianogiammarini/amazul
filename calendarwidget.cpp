@@ -1,4 +1,5 @@
 #include "calendarwidget.h"
+#include "combobox.h"
 #include <QtWidgets>
 #include <QDebug>
 
@@ -48,7 +49,7 @@ CalendarWidget::CalendarWidget(QWidget *parent) :
 	for(int i=0;i<7;i++)
 		setColumnWidth(i,COLUMN_WIDTH);
 
-	mCombo = new QComboBox(this);
+    mCombo = new ComboBox(this);
 	mCombo->setMaxVisibleItems(13);
 	mCombo->setGeometry(3*COLUMN_WIDTH+2,4*ROW_HEIGTH+2,4*COLUMN_WIDTH,ROW_HEIGTH);
 	mCombo->addItems(QStringList() << tr("Mes") << tr("Enero") << tr("Febrero")
