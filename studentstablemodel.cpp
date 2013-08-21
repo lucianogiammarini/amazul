@@ -110,7 +110,7 @@ QString StudentsTableModel::birthday(int row) const
 {
 	QModelIndex dayIdx = index(row, 6);
 	QModelIndex monthIdx = index(row, 7);
-	int day = data(dayIdx).toInt()+1;
+	int day = data(dayIdx).toInt();
 	int month = data(monthIdx, Qt::EditRole).toInt();
 	if (day == 0 || month==0)
 		return QString();

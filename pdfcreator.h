@@ -5,6 +5,7 @@
 #include <QMap>
 #include <QWebView>
 #include <QTemporaryFile>
+#include <QSortFilterProxyModel>
 #include "studentstablemodel.h"
 
 class PdfCreator : public QObject
@@ -12,7 +13,7 @@ class PdfCreator : public QObject
 	Q_OBJECT
 	
 public:
-	explicit PdfCreator(StudentsTableModel *model);
+	explicit PdfCreator(QSortFilterProxyModel *proxy, StudentsTableModel *model);
 	virtual ~PdfCreator();
 
 	void createPdf(const QString filename, QPrinter::PageSize size);
@@ -23,6 +24,7 @@ private slots:
 private:
 	QString buildHTML();
 
+	QSortFilterProxyModel			*proxyModel;
 	StudentsTableModel				*model;
 	QWebView						*web;
 	QPrinter						printer;

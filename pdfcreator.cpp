@@ -3,18 +3,19 @@
 #include "htmlConstants.h"
 #include <QDebug>
 
-PdfCreator::PdfCreator(StudentsTableModel *model) :
+PdfCreator::PdfCreator(QSortFilterProxyModel *proxy, StudentsTableModel *model) :
 	QObject()
 {
+	this->proxyModel = proxy;
 	this->model = model;
-	mLength.insert(QPrinter::Legal, 64);
-	mLength.insert(QPrinter::A4, 51);
+	mLength.insert(QPrinter::Legal, 59);
+	mLength.insert(QPrinter::A4, 48);
 
 	web = new QWebView();
 	connect(web, SIGNAL(loadFinished(bool)), this, SLOT(convertIt()));
 
 	printer.setPageSize(QPrinter::Legal); // "legal", "a4"
-	printer.setPageMargins(20, 15, 20, 15, QPrinter::Millimeter);
+	printer.setPageMargins(20, 2, 20, 0, QPrinter::Millimeter);
 	printer.setOutputFormat(QPrinter::PdfFormat);
 }
 
@@ -27,6 +28,7 @@ void PdfCreator::createPdf(const QString filename, QPrinter::PageSize size)
 {
 	printer.setOutputFileName(filename);
 	printer.setPageSize(size);
+	//printer.setPageMargins(0,0,0,0,QPrinter::Millimeter);
 	web->setHtml(buildHTML());
 }
 
@@ -42,13 +44,15 @@ QString PdfCreator::buildHTML()
 	int length = 0;
 	int page = 1;
 	for(int i=0; i<model->rowCount(); i++){
-		if (!model->print(i))
+		QModelIndex idx = proxyModel->index(i,0);
+		int row = proxyModel->mapToSource(idx).row();
+		if (!model->print(row))
 			continue;
 
-		QString name = model->name(i);
-		QString address = model->address(i);
-		QString birthday = model->birthday(i);
-		QStringList phones = model->phones(i);
+		QString name = model->name(row);
+		QString address = model->address(row);
+		QString birthday = model->birthday(row);
+		QStringList phones = model->phones(row);
 
 		int max = qMax(phones.count(), 2);
 		length += max;
