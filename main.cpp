@@ -56,8 +56,8 @@ int main(int argc, char *argv[])
 					  QLibraryInfo::location(QLibraryInfo::TranslationsPath));
 	app.installTranslator(&qtTranslator);
 
-	Amazul w;
-	w.show();
+    Amazul *w = new Amazul();
+    w->show();
     //app.setActivationWindow(&w);
 	
 	return app.exec();
