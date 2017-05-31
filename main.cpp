@@ -1,3 +1,5 @@
+#include <QtGui>
+#include <QtGlobal>
 #include <QApplication>
 //#include <QtSingleApplication>
 #include "amazul.h"
@@ -10,7 +12,7 @@
 #include <QFile>
 #include <QTextStream>
 
-void myMessageHandler(QtMsgType type, const char *msg)
+void myMessageHandler(QtMsgType type, const QMessageLogContext &, const QString &msg)
 {
 	QString txt;
 	switch (type) {
@@ -46,7 +48,7 @@ int main(int argc, char *argv[])
 		return 0;
     }*/
     QApplication app(argc, argv);
-    //qInstallMsgHandler(myMessageHandler);
+	qInstallMessageHandler(myMessageHandler);
 
 	QStyleFactory styleFactory = QStyleFactory();
 	app.setStyle(styleFactory.create("Plastique"));
